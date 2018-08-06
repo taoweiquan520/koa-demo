@@ -9,9 +9,17 @@ const session = require('koa-session-minimal');
 const MySqlStore = require('koa-mysql-session');
 
 const config = require('../config/config');
-const route = require('./router/index');
+const route = require('./routers/index');
 
 const app = new Koa();
+
+// session储存配置
+sessionMysqlConfig = {
+    user: config.database.USER,
+    password: config.database.PASSWORD,
+    database: config.database.DATABASE,
+    host: config.database.HOST
+}
 
 // 后台日志
 app.use(convert(logger()));

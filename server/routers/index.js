@@ -1,7 +1,7 @@
 /**
  * 整合路由
  */
-const router = require('koa-route');
+const router = require('koa-route')();
 
 const home = require('./home');
 const api = require('./api');
