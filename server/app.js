@@ -21,14 +21,27 @@ sessionMysqlConfig = {
     host: config.database.HOST
 }
 
+// 配置session中间件
+app.use(session({
+    key: 'USER_SID',
+    store: new MySqlStore(sessionMysqlConfig)
+}))
+
 // 后台日志
 app.use(convert(logger()));
 
 // 配置ctx.body解析中间件
 app.use(bodyParser());
 
-// static
-app.use(convert(static(path.join(__dirname, '../static'))));
+// static静态资源配置
+app.use(convert(static(
+    path.join(__dirname, '../static')
+)));
+
+// 服务端渲染模板中间件配置
+app.use(views(path.join(__dirname, './views'), {
+    extension: 'ejs'
+}))
 
 // 初始化路由
 app.use(route.routers()).use(route.allowedMethods());
