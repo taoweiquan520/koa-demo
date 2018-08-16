@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import HeaderNav from '../components/header-nav';
-import FooterCommon from '../components/footer-common';
+import HeaderNav from './../components/header-nav';
+import FooterCommon from './../components/footer-common';
 import 'antd/lib/layout/style/css';
-
+console.log('111111111111111')
 const { Header, Content, Footer } = Layout;
 
 class App extends React.Component {

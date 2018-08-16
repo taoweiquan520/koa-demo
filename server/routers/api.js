@@ -1,8 +1,9 @@
 /**
  * restful api 子路由
  */
-const router = require('koa-route')();
+const Router = require('koa-router');
 const userInfoController = require('../controllers');
+const router = new Router();
 
 const routers = router
     .get('/user/getUserInfo.json', userInfoController.getLoginUserInfo)

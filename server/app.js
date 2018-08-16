@@ -10,7 +10,7 @@ const MySqlStore = require('koa-mysql-session');
 
 const config = require('../config/config');
 const route = require('./routers/index');
-
+console.log(route)
 const app = new Koa();
 
 // session储存配置
@@ -44,7 +44,7 @@ app.use(views(path.join(__dirname, './views'), {
 }))
 
 // 初始化路由
-app.use(route.routers()).use(route.allowedMethods());
+app.use(route.routes()).use(route.allowedMethods());
 
 app.listen(config.port);
 console.log(`The server is started at port ${config.port}`);
