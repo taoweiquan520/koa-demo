@@ -16,7 +16,7 @@ class App extends React.Component {
                         <Breadcrumb.Item>Home</Breadcrumb.Item>
                     </Breadcrumb>
                     <div style={{background: '#fff', padding: 24, minHeight: 280}}>
-                        <p>index</p>
+                        <p>index 页面</p>
                     </div>
                 </Content>
                 <FooterCommon />

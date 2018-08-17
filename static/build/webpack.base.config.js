@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const sourcePath = path.join(__dirname, './static/src');
 const outputPath = path.join(__dirname, './../output/dist/');
-console.log('1')
 
 module.exports = {
     // 入口文件
@@ -70,6 +70,12 @@ module.exports = {
             names: ['vendor'],
             minChunks: Infinity,
             filename: 'js/[name].js'
+        }),
+        // 清除缓存
+        new CleanWebpackPlugin('static/output/dist/*',{
+            root: __dirname,
+            verbose: true,
+            dry:false
         })
     ]
 }

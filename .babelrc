@@ -1,16 +1,25 @@
 {
     "presets": ["react", "env"],
     "env": {
-      "development": {
-      "plugins": [["react-transform", {
-         "transforms": [{
-           "transform": "react-transform-hmr",
-           
-           "imports": ["react"],
-           
-           "locals": ["module"]
-         }]
-       }]]
-      }
+		"development": {
+			"plugins": [["react-transform", {
+				"transforms": [{
+					"transform": "react-transform-hmr",
+					
+					"imports": ["react"],
+					
+					"locals": ["module"]
+				}]
+			}]]
+		},
+		"production": {
+			"plugins": [["react-transform", {
+				"transforms": [{
+					"imports": ["react"],
+					
+					"locals": ["module"]
+				}]
+			}]]
+		}
     }
   }

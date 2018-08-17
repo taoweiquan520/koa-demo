@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack --watch --config ./static/build/webpack.dev.config.js",
+    "build": "set NODE_ENV=development && webpack-dev-server --config ./static/build/webpack.dev.config.js",
+    "dev_build": "set NODE_ENV=development && webpack --config ./static/build/webpack.dev.config.js",
+    "prod_build": "set NODE_ENV=production && webpack --watch --config ./static/build/webpack.prod.config.js",
     "start": "node ./server/app.js"
   },
   "author": "taoweiquan",
@@ -35,11 +37,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "react-transform-hmr": "^1.0.4",
     "style-loader": "^0.21.0",
     "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.4"
   }
 }
