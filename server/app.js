@@ -10,8 +10,17 @@ const MySqlStore = require('koa-mysql-session');
 
 const config = require('../config/config');
 const route = require('./routers/index');
-console.log(route)
+
 const app = new Koa();
+
+// 热更新中间件
+const webpack = require('webpack');
+const webpackDevConfig = require('../static/build/webpack.dev.config');
+const devMiddleware = require('./utils/devMiddleware');
+const hotMiddleware = require('./utils/hotMiddleware');
+const compiler = webpack(webpackDevConfig);
+app.use(devMiddleware(compiler));
+app.use(hotMiddleware(compiler));
 
 // session储存配置
 sessionMysqlConfig = {

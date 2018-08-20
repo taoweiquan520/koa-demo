@@ -72,7 +72,7 @@ module.exports = {
             filename: 'js/[name].js'
         }),
         // 清除缓存
-        new CleanWebpackPlugin('static/output/dist/*',{
+        new CleanWebpackPlugin('/output/dist', {
             root: __dirname,
             verbose: true,
             dry:false

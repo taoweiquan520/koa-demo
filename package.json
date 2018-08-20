@@ -8,7 +8,7 @@
     "build": "set NODE_ENV=development && webpack-dev-server --config ./static/build/webpack.dev.config.js",
     "dev_build": "set NODE_ENV=development && webpack --config ./static/build/webpack.dev.config.js",
     "prod_build": "set NODE_ENV=production && webpack --watch --config ./static/build/webpack.prod.config.js",
-    "start": "node ./server/app.js"
+    "server": "node ./server/app.js"
   },
   "author": "taoweiquan",
   "license": "ISC",
@@ -43,7 +43,8 @@
     "react-transform-hmr": "^1.0.4",
     "style-loader": "^0.21.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.3",
     "webpack-merge": "^4.1.4"
   }
 }
