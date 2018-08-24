@@ -8,9 +8,9 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
     // 入口文件
     entry: {
+        'index': './static/src/pages/index.js',
         'admin': './static/src/pages/admin.js',
         'work': './static/src/pages/work.js',
-        'index': './static/src/pages/index.js',
         'error': './static/src/pages/error.js',
         vendor: ['react', 'react-dom', 'whatwg-fetch']
     },

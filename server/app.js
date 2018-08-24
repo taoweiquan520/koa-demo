@@ -14,13 +14,13 @@ const route = require('./routers/index');
 const app = new Koa();
 
 // 热更新中间件
-const webpack = require('webpack');
-const webpackDevConfig = require('../static/build/webpack.dev.config');
-const devMiddleware = require('./utils/devMiddleware');
-const hotMiddleware = require('./utils/hotMiddleware');
-const compiler = webpack(webpackDevConfig);
-app.use(devMiddleware(compiler));
-app.use(hotMiddleware(compiler));
+// const webpack = require('webpack');
+// const webpackDevConfig = require('../static/build/webpack.dev.config');
+// const devMiddleware = require('./utils/devMiddleware');
+// const hotMiddleware = require('./utils/hotMiddleware');
+// const compiler = webpack(webpackDevConfig);
+// app.use(devMiddleware(compiler));
+// app.use(hotMiddleware(compiler));
 
 // session储存配置
 sessionMysqlConfig = {
@@ -53,7 +53,8 @@ app.use(views(path.join(__dirname, './views'), {
 }))
 
 // 初始化路由
-app.use(route.routes()).use(route.allowedMethods());
+app.use(route.routes())
+    .use(route.allowedMethods());
 
 app.listen(config.port);
 console.log(`The server is started at port ${config.port}`);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 const { Footer } = Layout;
 
-import 'antd/lib/layout/style/css'
+// import 'antd/lib/layout/style/css'
 
 class FooterCommon extends React.Component {
     render() {

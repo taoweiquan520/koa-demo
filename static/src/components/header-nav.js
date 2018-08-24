@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 const { Header } = Layout;
 
-import 'antd/lib/style/css';
+// import 'antd/lib/style/css';
 
 class HeaderNav extends React.Component {
     render() {

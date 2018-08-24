@@ -1,10 +1,11 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb, Steps } from 'antd';
 import HeaderNav from './../components/header-nav';
 import FooterCommon from './../components/footer-common';
-import 'antd/lib/layout/style/css';
-console.log('111111111111111')
-const { Header, Content, Footer } = Layout;
+import 'antd/dist/antd.css';
+
+const { Content } = Layout;
+const Step = Steps.Step;
 
 class App extends React.Component {
     render() {
@@ -16,7 +17,12 @@ class App extends React.Component {
                         <Breadcrumb.Item>Home</Breadcrumb.Item>
                     </Breadcrumb>
                     <div style={{background: '#fff', padding: 24, minHeight: 280}}>
-                        <p>index 页面</p>
+                        <p>步骤：</p>
+                        <Steps size="small" current={1}>
+                            <Step title="注册" />
+                            <Step title="校验" />
+                            <Step title="登录" />
+                        </Steps>
                     </div>
                 </Content>
                 <FooterCommon />
