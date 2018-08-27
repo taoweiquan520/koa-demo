@@ -1,33 +1,31 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { Tabs } from 'antd';
+import SignInForm from './sign-in-form';
+import SignUpForm from './sign-up-form';
 
+const TabPane = Tabs.TabPane;
 
 class FormGroup extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            current: 'login'
-        }
-
+        
         this.tabClick = this.tabClick.bind(this);
     }
 
-    tabClick() {
-        this.setState({
-            current: e.key
-        })
+    tabClick(key) {
+        console.log(key)
     }
 
     render() {
         return (
-            <Menu
-                onClick={this.tabClick}
-                selectedKeys={[this.state.current]}
-                mode="horizontal"
-            >
-                <Menu.Item key="login">登录</Menu.Item>
-                <Menu.Item key="register">注册</Menu.Item>
-            </Menu>
+            <Tabs defaultActiveKey="1" onChange={this.tabClick}>
+                <TabPane tab="登录" key="1">
+                    <SignInForm />
+                </TabPane>
+                <TabPane tab="注册" key="2">
+                    <SignUpForm />
+                </TabPane>
+            </Tabs>
         )
     }
 }
