@@ -8,10 +8,10 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
     // 入口文件
     entry: {
-        'index': './static/src/pages/index.js',
-        'admin': './static/src/pages/admin.js',
-        'work': './static/src/pages/work.js',
-        'error': './static/src/pages/error.js',
+        'index': ['babel-polyfill', './static/src/pages/index.js'],
+        'admin': ['babel-polyfill', './static/src/pages/admin.js'],
+        'work': ['babel-polyfill', './static/src/pages/work.js'],
+        'error': ['babel-polyfill', './static/src/pages/error.js'],
         vendor: ['react', 'react-dom', 'whatwg-fetch']
     },
     // 出口文件
