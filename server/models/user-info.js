@@ -7,7 +7,7 @@ const dbUtils = require('../utils/db-util');
 module.exports = {
     async signInModel(formData) {
         let sql = `
-            SELECT * from user_info where name = "${formData.name}" and password = "${formData.password}" limit 1
+            SELECT * from user where username = "${formData.name}" and password = "${formData.password}" limit 1
         `;
 
         let result = dbUtils.query(sql);
@@ -21,7 +21,9 @@ module.exports = {
         return result;
     },
     async signUpModel(userInfo) {
-        
+        let sql = `
+            INSERT 
+        `;
     },
     async getLoginUserInfoModel(formData) {
         

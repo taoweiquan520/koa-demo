@@ -31,10 +31,10 @@ sessionMysqlConfig = {
 }
 
 // 配置session中间件
-// app.use(session({
-//     key: 'USER_SID',
-//     store: new MySqlStore(sessionMysqlConfig)
-// }))
+app.use(session({
+    key: 'USER_SID',
+    store: new MySqlStore(sessionMysqlConfig)
+}))
 
 // 后台日志
 app.use(convert(logger()));

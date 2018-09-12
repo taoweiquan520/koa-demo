@@ -4,6 +4,7 @@
 const userInfoService = require('../services/user-info');
 
 module.exports = {
+    // 登录
     async signIn(ctx) {
         let requestDate = ctx.request.body;
         let result = {
@@ -35,9 +36,26 @@ module.exports = {
             ctx.body = result;
         }
     },
+    // 注册
     async signUp(ctx) {
+        let requestData = ctx.request.body;
+        let result = {
+            status: false,
+            message: '',
+            data: null
+        };
+        let dataResult = await userInfoService.signUpService(requestData);
 
+        if (dataResult) {
+            result.status = true;
+        } else {
+            result.message = '系统错误';
+        }
+
+        ctx.body = result;
+        
     },
+    // 查看用户
     async getLoginUserInfo(ctx) {
 
     }
