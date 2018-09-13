@@ -6,8 +6,8 @@ const FormItem = Form.Item;
 class SignInForm extends React.Component {
     async handleSubmit(e) {
         e.preventDefault();
-        
-        const value = await getFormValue();
+        console.log(this)
+        const value = await this.getFormValue();
 
         if (value) {
             console.log('11')
@@ -30,6 +30,7 @@ class SignInForm extends React.Component {
     }
 
     render() {
+        console.log(this)
         const { getFieldDecorator } = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit} className="login-form" style={{width: 280, margin: '0 auto'}}>

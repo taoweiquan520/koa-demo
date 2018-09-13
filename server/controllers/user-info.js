@@ -44,6 +44,26 @@ module.exports = {
             message: '',
             data: null
         };
+
+        // 字段校验
+        let validateResult = userInfoService.validation(requestData);
+        
+        if (!validateResult.status) {
+            result.message = validateResult.message;
+            return result;
+        }
+
+        // 数据库判断是否存在
+        let exist = userInfoService.getExist(requestData);
+
+        if (exist) {
+            if (exist.username == requestData.username) {
+                result.message = '账号已存在';
+                return result;
+            }
+        }
+
+        // 数据库注册账号
         let dataResult = await userInfoService.signUpService(requestData);
 
         if (dataResult) {
