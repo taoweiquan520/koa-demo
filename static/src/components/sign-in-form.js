@@ -1,25 +1,32 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import {signIn} from '../api';
 
 const FormItem = Form.Item;
 
 class SignInForm extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.getFormValue = this.getFormValue.bind(this);
+    }
+
     async handleSubmit(e) {
         e.preventDefault();
-        console.log(this)
-        const value = await this.getFormValue();
-
-        if (value) {
-            console.log('11')
-            // const result = await signInApi();
+        const values = await this.getFormValue();
+        console.log(values)
+        if (values) {
+            let res = signIn(values);
+            console.log(res)
         } else {
             message.error('系统繁忙，请稍后重试！')
         }
     }
 
     getFormValue() {
+        let that = this;
         return new Promise((resolve, reject) => {
-            this.props.form.validateField((err, value) => {
+            that.props.form.validateFields((err, value) => {
                 if (!err) {
                     resolve(value);
                 } else {
@@ -30,10 +37,9 @@ class SignInForm extends React.Component {
     }
 
     render() {
-        console.log(this)
         const { getFieldDecorator } = this.props.form;
         return (
-            <Form onSubmit={this.handleSubmit} className="login-form" style={{width: 280, margin: '0 auto'}}>
+            <Form onSubmit={this.handleSubmit.bind(this)} className="login-form" style={{width: 280, margin: '0 auto'}}>
                 <FormItem>
                 {
                     getFieldDecorator('userName', {
