@@ -1,5 +1,5 @@
 {
-    "presets": ["react", "env", "es2015"],
+    "presets": ["react", "env", "es2015", "stage-0"],
     "env": {
 		"development": {
 			"plugins": [
@@ -7,7 +7,7 @@
 					"transform-runtime",
 					{
 						"helpers": false,
-						"polyfill": false,
+						"polyfill": true,
 						"regenerator": true,
 						"moduleName": "babel-runtime"
 					}

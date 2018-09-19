@@ -6,6 +6,7 @@ const userInfoService = require('../services/user-info');
 module.exports = {
     // 登录
     async signIn(ctx) {
+        console.log('--------------登录')
         let requestDate = ctx.request.body;
         let result = {
             status: false,
@@ -13,13 +14,18 @@ module.exports = {
             data: null
         };
         let dataResult = await userInfoService.signInService(requestDate);
-
+        console.log('--------------controller')
+        
         if (dataResult) {
-            if (requestDate.userName === dataResult.name) {
-                result.status = true;
-                result.message = ''
+            if (requestDate.username === dataResult.username) {
+                if (requestDate.password === dataResult.password) {
+                    result.status = true;
+                    result.message = '登录成功'
+                } else {
+                    result.message = '密码错误'
+                }
             } else {
-                result.message = '用户账号密码错误'
+                result.message = '未知错误'
             }
         } else {
             result.message = '用户不存在';

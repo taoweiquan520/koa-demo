@@ -12,7 +12,7 @@ module.exports = {
             username: formData.username,
             password: formData.password
         });
-
+        console.log('----------services')
         return resultData;
     },
     // 注册业务操作

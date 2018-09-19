@@ -8,6 +8,10 @@ const { Content } = Layout;
 const Step = Steps.Step;
 
 class App extends React.Component {
+    async textInput(e, str) {
+        console.log(e)
+        console.log(str)
+    }
     render() {
         return (
             <Layout className="layout">
@@ -23,6 +27,7 @@ class App extends React.Component {
                             <Step title="校验" />
                             <Step title="登录" />
                         </Steps>
+                        <input type="text" placeholder="请输入" onInput={this.textInput.bind(this, '参数')} />
                     </div>
                 </Content>
                 <FooterCommon />

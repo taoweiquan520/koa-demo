@@ -7,11 +7,12 @@ const dbUtils = require('../utils/db-util');
 module.exports = {
     async signInModel(formData) {
         let sql = `
-            SELECT * from user where username = "${formData.username}" and password = "${formData.password}" limit 1
+            SELECT * from user where username = "${formData.username}" limit 1
         `;
 
-        let result = dbUtils.query(sql);
-
+        let result = await dbUtils.query(sql);
+        console.log('------------models');
+        
         if (Array.isArray(result) && result.length > 0) {
             result = result[0];
         } else {
@@ -25,7 +26,7 @@ module.exports = {
             INSERT into user set username = "${userInfo.username}" ,password = "${userInfo.password}" and email = "${userInfo.email}"
         `;
 
-        let result = dbUtils.query(sql);
+        let result = await dbUtils.query(sql);
 
         return result;
     },
@@ -34,8 +35,8 @@ module.exports = {
             SELECT * from user where username = "${userInfo.username}" or email = "${userInfo.email}" limit 1
         `;
 
-        let result = dbUtils.query(sql);
-
+        let result = await dbUtils.query(sql);
+        
         if (Array.isArray(result) && result.length > 0) {
             result = result[0];
         } else {

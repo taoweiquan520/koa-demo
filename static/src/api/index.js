@@ -1,15 +1,16 @@
 import $ from 'jquery';
+import Request from '../utils/request';
 
 // 登录
 const signIn = (values) => {
     var result;
-    debugger
+    
     $.ajax({
         url: '/api/user/signIn.json',
         type: 'post',
         data: values,
         async: false,
-        succsess: (res) => {
+        success: (res) => {
             result = res;
         },
         error: (err) => {
@@ -18,6 +19,14 @@ const signIn = (values) => {
     })
     
     return result;
+}
+
+const signInForm = ( userInfo ) => {
+    userInfo.source = 'form';
+    Request.form({
+      url: '/api/user/signIn.json',
+      data: userInfo,
+    })
 }
 
 // 注册
@@ -44,5 +53,6 @@ const signUp = (values) => {
 
 export {
     signIn,
+    signInForm,
     signUp
 }
