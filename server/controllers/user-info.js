@@ -60,7 +60,7 @@ module.exports = {
         }
 
         // 数据库判断是否存在
-        let exist = userInfoService.getExist(requestData);
+        let exist = await userInfoService.getExist(requestData);
 
         if (exist) {
             if (exist.username == requestData.username) {

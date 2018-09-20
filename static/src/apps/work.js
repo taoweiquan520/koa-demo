@@ -16,7 +16,7 @@ class Work extends React.Component {
                         <Breadcrumb.Item>Work</Breadcrumb.Item>
                     </Breadcrumb>
                     <div style={{backgroundColor: '#fff', padding: 24, minHeight: 280}}>
-                        admin
+                        work
                     </div>
                 </Content>
                 <FooterCommon />
