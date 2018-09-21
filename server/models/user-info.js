@@ -3,6 +3,7 @@
  * 创造sql语句
  */
 const dbUtils = require('../utils/db-util');
+const getNowTime = require('../utils/getDateTime').getNowTime;
 
 module.exports = {
     async signInModel(formData) {
@@ -22,10 +23,12 @@ module.exports = {
         return result;
     },
     async signUpModel(userInfo) {
+        // 账号等级
+        const level = 2;
         let sql = `
-            INSERT into user set username = "${userInfo.username}" ,password = "${userInfo.password}" and email = "${userInfo.email}"
+            INSERT into user(username, password, email, create_time, level) VALUES("${userInfo.username}", "${userInfo.password}", "${userInfo.email}", "${getNowTime()}", "${level}")
         `;
-
+        
         let result = await dbUtils.query(sql);
 
         return result;
@@ -42,7 +45,7 @@ module.exports = {
         } else {
             result = null;
         }
-
+        
         return result;
     },
     async getLoginUserInfoModel(formData) {

@@ -1,10 +1,44 @@
 import React from 'react';
-import { Form, Icon, Tooltip, Input, Checkbox, Button } from 'antd';
+import { Form, Icon, Tooltip, Input, Checkbox, Button, message } from 'antd';
+import { signUp } from '../api';
 const FormItem = Form.Item;
 
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let values = await this.getFormValues()
+        console.log(values)
+        if (values) {
+            let result = await signUp(values);
+            console.log('result', result)
+            if (result.status) {
+                message.success('注册成功！')
+            } else {
+                message.error(result.message)
+            }
+        } else {
+            message.error('系统繁忙，请稍后重试！')
+        }
+    }
+
+    getFormValues = () => {
+        let that = this;
+        return new Promise((resolve, reject) => {
+            that.props.form.validateFieldsAndScroll((err, values) => {
+                if (!err) {
+                    resolve(values)
+                } else {
+                    reject(false)
+                }
+            })
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     render() {

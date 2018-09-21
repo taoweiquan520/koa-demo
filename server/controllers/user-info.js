@@ -56,30 +56,32 @@ module.exports = {
         
         if (!validateResult.status) {
             result.message = validateResult.message;
-            return result;
+            ctx.body = result;
+            return ;
         }
 
         // 数据库判断是否存在
         let exist = await userInfoService.getExist(requestData);
-
+        
         if (exist) {
-            if (exist.username == requestData.username) {
+            if (exist.username == requestData.username || exist.email == requestData.email) {
                 result.message = '账号已存在';
-                return result;
+                ctx.body = result;
+                return ;
             }
         }
-
+        
         // 数据库注册账号
         let dataResult = await userInfoService.signUpService(requestData);
 
         if (dataResult) {
             result.status = true;
+            result.message = '注册成功';
         } else {
             result.message = '系统错误';
         }
 
         ctx.body = result;
-        
     },
     // 查看用户
     async getLoginUserInfo(ctx) {

@@ -18,9 +18,9 @@ module.exports = {
     // 注册业务操作
     async signUpService(userInfo) {
         let resultData = await userInfoModel.signUpModel({
-            name: formData.username,
-            password: formData.password,
-            email: formData.email
+            username: userInfo.username,
+            password: userInfo.password,
+            email: userInfo.email
         });
 
         return resultData;

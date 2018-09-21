@@ -31,24 +31,22 @@ const signInForm = ( userInfo ) => {
 
 // 注册
 const signUp = (values) => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: '/api/user/signUp.json',
-            data: {
-                
-            },
-            succsess: (res) => {
-                if (res.status) {
-                    resolve(res)
-                } else {
-                    reject(res);
-                }
-            },
-            error: (err) => {
-                reject(err);
-            }
-        })
+    var result;
+
+    $.ajax({
+        url: '/api/user/signUp.json',
+        type: 'post',
+        data: values,
+        async: false,
+        success: (res) => {
+            result = res;
+        },
+        error: (err) => {
+            result = err;
+        }
     })
+
+    return result;
 }
 
 export {
