@@ -1,0 +1,6 @@
+@charset "utf-8";
+.img-test {
+    width: 100px; 
+    height: 100px;
+    background: url('../images/chicken.jpg') center center no-repeat;
+}

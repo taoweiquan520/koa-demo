@@ -3,6 +3,9 @@ import { Layout, Breadcrumb, Steps } from 'antd';
 import HeaderNav from './../components/header-nav';
 import FooterCommon from './../components/footer-common';
 import 'antd/dist/antd.css';
+import '../css/home.css';
+// import filePng from '../images/chicken.jpg';
+console.log(filePng)
 
 const { Content } = Layout;
 const Step = Steps.Step;
@@ -28,6 +31,9 @@ class App extends React.Component {
                             <Step title="登录" />
                         </Steps>
                         <input type="text" placeholder="请输入" onInput={this.textInput.bind(this, '参数')} />
+                        <div className="img-test">
+                            
+                        </div>
                     </div>
                 </Content>
                 <FooterCommon />

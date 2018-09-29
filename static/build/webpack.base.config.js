@@ -2,9 +2,11 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
-const sourcePath = path.join(__dirname, './static/src');
+const sourcePath = path.join(__dirname, './../src');
 const outputPath = path.join(__dirname, './../output/dist/');
-
+console.log('---------------outputPath', outputPath)
+console.log('---------------sourcePath', sourcePath)
+console.log(path.join(__dirname, '../../'))
 module.exports = {
     // 入口文件
     entry: {
@@ -12,6 +14,7 @@ module.exports = {
         'admin': ['babel-polyfill', './static/src/pages/admin.js'],
         'work': ['babel-polyfill', './static/src/pages/work.js'],
         'error': ['babel-polyfill', './static/src/pages/error.js'],
+        // 依赖的第三方库
         vendor: ['react', 'react-dom', 'whatwg-fetch']
     },
     // 出口文件
@@ -54,6 +57,19 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader', 'less-loader']
                 })
+            },
+            {
+                test: /\.(png|gif|jpg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            publicPath: path.join(__dirname, '../../static'),
+                            outputPath: outputPath
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -72,8 +88,8 @@ module.exports = {
             filename: 'js/[name].js'
         }),
         // 清除缓存
-        new CleanWebpackPlugin('/output/dist', {
-            root: __dirname,
+        new CleanWebpackPlugin(outputPath, {
+            root: path.join(__dirname, '../../'),
             verbose: true,
             dry:false
         })
