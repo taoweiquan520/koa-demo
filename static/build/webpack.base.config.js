@@ -23,6 +23,16 @@ module.exports = {
         publicPath: './static/output/dist/',
         filename: 'js/[name].js'
     },
+
+    // webpack-dev-server热更新
+    devServer: {
+        contentBase: path.join(__dirname, '../src/'),  // 热更新文件所在的目录
+        historyApiFallback: true, // 不跳转
+        inline: true, // 实时刷新
+        port: 8089,
+        hot: true
+    },
+
     module: {
         rules: [
             {
@@ -87,6 +97,7 @@ module.exports = {
             minChunks: Infinity,
             filename: 'js/[name].js'
         }),
+        new webpack.HotModuleReplacementPlugin(), // 热加载插件
         // 清除缓存
         new CleanWebpackPlugin(outputPath, {
             root: path.join(__dirname, '../../'),

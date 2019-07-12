@@ -50,5 +50,15 @@ module.exports = {
     },
     async getLoginUserInfoModel(formData) {
         
+    },
+    async getArticlesModel(data) {
+        console.log('data', data)
+        let sql = `
+            SELECT * from article as a,category as b where a.category_id = b.category_id and b.name='${data}'
+        `;
+
+        let result = await dbUtils.query(sql);
+
+        return result;
     }
 }

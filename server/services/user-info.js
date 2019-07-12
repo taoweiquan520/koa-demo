@@ -35,6 +35,12 @@ module.exports = {
     async getLoginUserInfoService(userName) {
 
     },
+    // 获取article列表
+    async getArticlesService(data) {
+        let resultData = await userInfoModel.getArticlesModel(data);
+
+        return resultData;
+    },
     // 注册账号输入校验
     validation(formData) {
         let result = {

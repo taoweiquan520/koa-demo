@@ -86,5 +86,37 @@ module.exports = {
     // 查看用户
     async getLoginUserInfo(ctx) {
 
+    },
+    // Article
+    // 查看文章列表
+    async getArticles(ctx) {
+        console.log('--------------获取文章列表');
+        let requestDate = ctx.request.body;
+        console.log(requestDate)
+        const {category = ''} = requestDate;
+        let result = {
+            status: false,
+            message: '',
+            data: null
+        };
+        if (!category) {
+            result.message = '文章种类为空';
+            ctx.body = result;
+            return;
+        }
+
+        let dataResult = await userInfoService.getArticlesService(category);
+        console.log('--------------controller');
+
+        if (!dataResult) {
+            result.data = [];
+            result.message = '';
+        } else {
+            result.status = true;
+            result.data = dataResult;
+            result.message = 'success';
+        }
+
+        ctx.body = result;
     }
 }
