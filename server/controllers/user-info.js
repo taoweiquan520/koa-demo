@@ -113,7 +113,7 @@ module.exports = {
             result.message = '';
         } else {
             result.status = true;
-            result.data = dataResult;
+            result.list = dataResult;
             result.message = 'success';
         }
 
