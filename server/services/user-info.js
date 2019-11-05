@@ -41,6 +41,17 @@ module.exports = {
 
         return resultData;
     },
+    async getArticleDetailService(id) {
+        let resultData = await userInfoModel.getArticleDetailModel(id);;
+
+        return resultData;
+    },
+    // 获取hot文章列表
+    async getHotArticlesService() {
+        let resultData = await userInfoModel.getHotArticlesModel();
+
+        return resultData;
+    },
     // 注册账号输入校验
     validation(formData) {
         let result = {

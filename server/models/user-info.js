@@ -51,8 +51,8 @@ module.exports = {
     async getLoginUserInfoModel(formData) {
         
     },
+    // 获取文章列表
     async getArticlesModel(data) {
-        console.log('data', data)
         let sql = `
             SELECT * from article as a,category as b where a.category_id = b.category_id and b.name='${data}'
         `;
@@ -60,5 +60,25 @@ module.exports = {
         let result = await dbUtils.query(sql);
 
         return result;
-    }
+    },
+    // 获取文章详情
+    async getArticleDetailModel(id) {
+        let sql = `
+            SELECT * from article as a where a.article_id='${id}'
+        `;
+
+        let result = await dbUtils.query(sql);
+
+        return result;
+    },
+    // 获取hot文章列表
+    async getHotArticlesModel() {
+        let sql = `
+            SELECT * from article order by views desc limit 5
+        `;
+
+        let result = await dbUtils.query(sql);
+        
+        return result;
+    },
 }

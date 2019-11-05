@@ -92,12 +92,11 @@ module.exports = {
     async getArticles(ctx) {
         console.log('--------------获取文章列表');
         let requestDate = ctx.request.body;
-        console.log(requestDate)
         const {category = ''} = requestDate;
         let result = {
             status: false,
             message: '',
-            data: null
+            list: null
         };
         if (!category) {
             result.message = '文章种类为空';
@@ -108,6 +107,50 @@ module.exports = {
         let dataResult = await userInfoService.getArticlesService(category);
         console.log('--------------controller');
 
+        if (!dataResult) {
+            result.list = [];
+            result.message = '';
+        } else {
+            result.status = true;
+            result.list = dataResult;
+            result.message = 'success';
+        }
+
+        ctx.body = result;
+    },
+    // 查看单条文章详情
+    async getArticleDetail(ctx) {
+        console.log('--------------获取文章详情');
+        let requestDate = ctx.request.body;
+        const {articleId = ''} = requestDate;
+        const result = {
+            status: false,
+            message: '',
+            data: null
+        };
+        const dataResult = await userInfoService.getArticleDetailService(articleId);
+
+        if (!dataResult) {
+            result.message = '获取数据失败'
+        } else {
+            result.status = true;
+            result.data = dataResult[0];
+        }
+
+        ctx.body = result;
+    },
+    // 获得hot文章列表
+    async getHotList(ctx) {
+        console.log('--------------获取hot文章列表');
+        
+        const result = {
+            status: false,
+            message: '',
+            data: null
+        };
+        
+        let dataResult = await userInfoService.getHotArticlesService();
+        
         if (!dataResult) {
             result.data = [];
             result.message = '';
