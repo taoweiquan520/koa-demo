@@ -29,7 +29,7 @@
     "mysql": "^2.16.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "validator": "^10.7.1",
+    "validator": "^13.7.0",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
